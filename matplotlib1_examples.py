@@ -21,11 +21,16 @@ Notes:
 #%%
 # import libraries
 
+import os
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
+dpi = 300
 
-project_dir = r'/home/md33a/Python Projects/matplotlib1_examples/'
+# if you are on windows, you are going to have to change the file path to
+# windows style
+project_dir = os.getcwd() + '/'
 data_dir = project_dir + r'data/'
 
 #%%
@@ -54,6 +59,9 @@ ax.set_yticklabels(states, fontsize=7)
 
 plt.tight_layout()
 
+
+plot1_filename = 'Hospitals.png'
+plt.savefig(project_dir + plot1_filename, dpi=dpi)
 
 
 #%%
@@ -154,6 +162,9 @@ for index, label in labels.iteritems():
 
 plt.tight_layout()
 
+plot2_filename = 'museums_culture_by_city_v1.png'
+plt.savefig(project_dir + plot2_filename, dpi=dpi)
+
 
 #%%
 # Line Plot - Top Selling Video Games by Year and Lifetime Sales (as of 2019)
@@ -239,6 +250,9 @@ for index, row in sorted_df.iterrows():
 
 plt.tight_layout()
 
+plot3_filename = 'vgsales.png'
+plt.savefig(project_dir + plot3_filename, dpi=dpi)
+
 
 #%%
 # Bar Plot - Heavy Metal Bands
@@ -273,6 +287,8 @@ ax.set_xlabel('Total Heavy Metal Bands', fontsize=12)
 ax.set_ylabel('Country', fontsize=12, labelpad=1.5)
 ax.set_yticklabels(list(country_series.index), fontsize=8)
 
+plot4_filename = 'metal_bands_2017.png'
+plt.savefig(project_dir + plot4_filename, dpi=dpi)
 
 
 #%%
@@ -299,7 +315,8 @@ ax.set_xlabel('Month Number', fontsize=12)
 ax.set_ylabel('Percent Change (Year Over Year)', fontsize=12, labelpad=1.5)
 ax.legend(['New Credit Cards', 'Dollar Volume on New Cards'], loc='lower right')
 
-
+plot5_filename = 'CFPB_data.png'
+plt.savefig(project_dir + plot5_filename, dpi=dpi)
 
 
 
