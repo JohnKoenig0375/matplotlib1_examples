@@ -30,7 +30,8 @@ dpi = 300
 
 # if you are on windows, you are going to have to change the file path to
 # windows style
-project_dir = os.getcwd() + '/'
+project_dir = r'/home/md33a/Python Projects/matplotlib1_examples/'
+#project_dir = os.getcwd() + 'matplotlib1_examples/'
 data_dir = project_dir + r'data/'
 
 #%%
@@ -61,7 +62,7 @@ plt.tight_layout()
 
 
 plot1_filename = 'Hospitals.png'
-plt.savefig(project_dir + plot1_filename, dpi=dpi)
+fig.savefig(project_dir + plot1_filename, dpi=dpi)
 
 
 #%%
@@ -163,7 +164,7 @@ for index, label in labels.iteritems():
 plt.tight_layout()
 
 plot2_filename = 'museums_culture_by_city_v1.png'
-plt.savefig(project_dir + plot2_filename, dpi=dpi)
+fig.savefig(project_dir + plot2_filename, dpi=dpi)
 
 
 #%%
@@ -251,7 +252,7 @@ for index, row in sorted_df.iterrows():
 plt.tight_layout()
 
 plot3_filename = 'vgsales.png'
-plt.savefig(project_dir + plot3_filename, dpi=dpi)
+fig.savefig(project_dir + plot3_filename, dpi=dpi)
 
 
 #%%
@@ -288,7 +289,7 @@ ax.set_ylabel('Country', fontsize=12, labelpad=1.5)
 ax.set_yticklabels(list(country_series.index), fontsize=8)
 
 plot4_filename = 'metal_bands_2017.png'
-plt.savefig(project_dir + plot4_filename, dpi=dpi)
+fig.savefig(project_dir + plot4_filename, dpi=dpi)
 
 
 #%%
@@ -303,20 +304,26 @@ columns = list(df5.columns)
 
 
 # create bar plot
+labels = ['New Credit Cards', 'Dollar Volume on New Cards']
+
 x = df5['Month'].values
 y = df5.iloc[:,1:]
 
 fig, ax = plt.subplots(figsize=(8,10))
+ax.axhline(0, xmin=0, xmax=df5['Month'].max(), color='black')
 
-ax.plot(x, y)
+handles = ax.plot(x, y)  # I need to save references to the handles so I can fix the legend
 
 ax.set_title('New Credit Cards Count and Dollar Volume - Percent Change YoY', fontsize=14)
 ax.set_xlabel('Month Number', fontsize=12)
 ax.set_ylabel('Percent Change (Year Over Year)', fontsize=12, labelpad=1.5)
-ax.legend(['New Credit Cards', 'Dollar Volume on New Cards'], loc='lower right')
+
+ax.legend(handles, labels, loc='lower right')
+
+
 
 plot5_filename = 'CFPB_data.png'
-plt.savefig(project_dir + plot5_filename, dpi=dpi)
+fig.savefig(project_dir + plot5_filename, dpi=dpi)
 
 
 
