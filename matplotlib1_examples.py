@@ -31,11 +31,11 @@ dpi = 300
 # if you are on windows, you are going to have to change the file path to
 # windows style
 project_dir = r'/home/md33a/Python Projects/matplotlib1_examples/'
-#project_dir = os.getcwd() + 'matplotlib1_examples/'
 data_dir = project_dir + r'data/'
+output_dir = project_dir + r'output/'
 
 #%%
-# Horizontal Bar Chart - Hospitals
+# Bar Chart - Hospitals
 # Data Source: Homeland Infrastructure Foundation-Level Data (HIFLD)
 # https://hifld-geoplatform.opendata.arcgis.com/datasets/6ac5e325468c4cb9b905f1728d6fbf0f_0
 
@@ -45,24 +45,23 @@ df1_head = df1.iloc[:100,:]
 columns = list(df1.columns)
 
 
-state_counts = df1['STATE'].value_counts(ascending=True)
+state_counts = df1['STATE'].value_counts(ascending=False)
 states = pd.Series(list(state_counts.index))
 state_counts.index = range(len(state_counts))
 
 # create horizontal bar chart
-fig, ax = plt.subplots(figsize=(6,8))
+fig, ax = plt.subplots(figsize=(12,6))
 
-ax.barh(states, state_counts)
+ax.bar(states, state_counts)
 ax.set_title('Count of Hospitals by State')
-ax.set_xlabel('Hostpital Count')
-ax.set_ylabel('State')
-ax.set_yticklabels(states, fontsize=7)
+ax.set_xlabel('State')
+ax.set_xticklabels(states, fontsize=8)
+ax.set_ylabel('Hostpital Count')
 
 plt.tight_layout()
 
-
 plot1_filename = 'Hospitals.png'
-fig.savefig(project_dir + plot1_filename, dpi=dpi)
+fig.savefig(output_dir + plot1_filename, dpi=dpi)
 
 
 #%%
@@ -164,7 +163,7 @@ for index, label in labels.iteritems():
 plt.tight_layout()
 
 plot2_filename = 'museums_culture_by_city_v1.png'
-fig.savefig(project_dir + plot2_filename, dpi=dpi)
+fig.savefig(output_dir + plot2_filename, dpi=dpi)
 
 
 #%%
@@ -252,7 +251,7 @@ for index, row in sorted_df.iterrows():
 plt.tight_layout()
 
 plot3_filename = 'vgsales.png'
-fig.savefig(project_dir + plot3_filename, dpi=dpi)
+fig.savefig(output_dir + plot3_filename, dpi=dpi)
 
 
 #%%
@@ -289,7 +288,7 @@ ax.set_ylabel('Country', fontsize=12, labelpad=1.5)
 ax.set_yticklabels(list(country_series.index), fontsize=8)
 
 plot4_filename = 'metal_bands_2017.png'
-fig.savefig(project_dir + plot4_filename, dpi=dpi)
+fig.savefig(output_dir + plot4_filename, dpi=dpi)
 
 
 #%%
@@ -323,40 +322,4 @@ ax.legend(handles, labels, loc='lower right')
 
 
 plot5_filename = 'CFPB_data.png'
-fig.savefig(project_dir + plot5_filename, dpi=dpi)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fig.savefig(output_dir + plot5_filename, dpi=dpi)
